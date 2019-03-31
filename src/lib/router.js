@@ -1,12 +1,12 @@
 import React from 'react';
 import { createMaterialTopTabNavigator } from 'react-navigation';
 import HomeScreen from '../pages/home';
-import Second from '../pages/home/second';
+import ProdutoScreen from '../pages/produto';
 import Third from '../pages/home/third';
 
 const AppNavigator = createMaterialTopTabNavigator({
     Home: HomeScreen,
-    Second: Second,
+    Produto: ProdutoScreen,
     Third: Third
 },{
     tabBarOptions: {
