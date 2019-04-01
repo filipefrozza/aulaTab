@@ -1,12 +1,14 @@
 import React, {Component} from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
+import styles from '../../lib/styles';
 
 export default class Third extends Component{
     render(){
         return(
-            <View>
-                <Text>Third Screen</Text>
+            <View style={styles.container}>
+                <Text style={styles.title}>Third Screen</Text>
+                <View style={styles.screenContainer}></View>
             </View>
         );
     }
