@@ -13,17 +13,20 @@ export default class ProdutoScreen extends Component{
 
     atualizarLista() {
         API.get(
-            'produtos',
-            {
-                headers: {
-                    Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVjOWExODQ5NDA3ODkzMTg4MGRmMmQ3MiIsImVtYWlsIjoiZmlsaXBlZnJvenphLmZtQGdtYWlsLmNvbSIsImlhdCI6MTU1NDEzNDMzMiwiZXhwIjoxNTU0MTM3OTMyfQ.mAA19uyj3Viv1T4fX91YUxzlxhuCoPoKLVEFC9n8h5w"
-                }
-            }
+            'produtos'
         ).then(res => {
             console.log(res);
             this.setState({produtos: res.data});
         }).catch(e => {
-            // this.setState({ erro: JSON.stringify(e) });
+            if(e.response){
+                if(e.response.status == 401){
+                    alert("Token inválido");
+                }
+            }else if(e.request){
+
+            }else{
+
+            }
         });
     }
 

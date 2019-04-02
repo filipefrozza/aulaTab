@@ -1,11 +1,12 @@
 import React, {Component} from 'react';
 import {View, Text, Button, TextInput, KeyboardAvoidingView} from 'react-native';
 import styles from '../../lib/styles';
+import API from '../../lib/api';
 
 export default class LoginScreen extends Component{
     constructor(props){
         super(props);
-        this.state = {password: "", email: ""};
+        this.state = {password: "", email: "", token: ""};
     }
 
     render() {
@@ -21,7 +22,7 @@ export default class LoginScreen extends Component{
                         keyboardType="email-address"
                         autoCapitalize="none"
                         autoCorrect={false}
-                        onChangeText={(text) => this.setState({email: text})}
+                        onChangeText={(text) => {this.setState({email: text})}}
                     />
                     <TextInput 
                         style={styles.input} 
@@ -31,11 +32,33 @@ export default class LoginScreen extends Component{
                         ref={(input) => this.passwordInput = input}
                         onChangeText={(text) => this.setState({ password: text })}
                     />
-                    <Text>Email: {this.state.email} | Senha: {this.state.password}</Text>
-                    <Button style={styles.button} title="Logar" onPress={() => this.props.navigation.navigate('App')} />
+                    <Text style={{flex: 1}}>Email: {this.state.email} | Senha: {this.state.password}</Text>
+                    <Button style={styles.button} title="Logar" onPress={() => {this.logar()}} />
                     <Button style={styles.button} title="Cancelar" onPress={() => this.props.navigation.navigate('Welcome')} />
                 </View>
             </View>
         );
+    }
+
+    logar() {
+        API.post('users/login',{
+            email: this.state.email,
+            password: this.state.password
+        }).then((res) => {
+            API.defaults.headers.common['Authorization'] = "Bearer "+res.data.token;
+            this.props.navigation.navigate('App');
+        }).catch((e) =>{
+            if(e.response){
+                if(e.response.status == 400){
+                    alert("Usuário/Senha inválido");
+                }else{
+                    alert("Houve um erro na comunicação");
+                }
+            }else if(e.request){
+                alert("Problemas no servidor");
+            }else{
+                alert("Problemas no aplicativo");
+            }
+        });
     }
 }
