@@ -1,8 +1,7 @@
 import React, {Component} from 'react';
 import {View, Text, StyleSheet, StatusBar} from 'react-native';
 import {createAppContainer} from 'react-navigation';
-import AppNavigator from './lib/router';
-import Icon from 'react-native-vector-icons/Ionicons';
+import AppNavigator from './pages/login';
 
 const AppIndex = createAppContainer(AppNavigator);
 
@@ -10,14 +9,6 @@ export default class App extends Component {
     render() {
         return(
             <View style={{flex: 1}}>
-                <StatusBar
-                    backgroundColor="red"
-                    barStyle="light-content"
-                />
-                <View style={styles.header}>
-                    <Icon name="ios-camera" size={28} color="white" />
-                    <Icon name="ios-menu" size={28} color="white" />
-                </View>
                 <AppIndex />
             </View>
         );

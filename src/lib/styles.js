@@ -31,5 +31,11 @@ export default styles = StyleSheet.create({
     container: { 
         flex: 1, 
         alignItems: "stretch" 
+    },
+    input: {
+        flex: 1
+    },
+    button: {
+        flex: 1
     }
 });
