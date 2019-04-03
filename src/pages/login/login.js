@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View, Text, Button, TextInput, KeyboardAvoidingView} from 'react-native';
+import {View, Text, Button, TextInput, TouchableOpacity} from 'react-native';
 import styles from '../../lib/styles';
 import API from '../../lib/api';
 
@@ -13,7 +13,7 @@ export default class LoginScreen extends Component{
         return(
             <View style={styles.container}>
                 <Text style={styles.title}>Login</Text>
-                <View style={styles.screenContainer}>
+                <View style={[styles.screenContainer, styles.formContainer]}>
                     <TextInput 
                         style={styles.input} 
                         placeholder="Email" 
@@ -32,9 +32,16 @@ export default class LoginScreen extends Component{
                         ref={(input) => this.passwordInput = input}
                         onChangeText={(text) => this.setState({ password: text })}
                     />
-                    <Text style={{flex: 1}}>Email: {this.state.email} | Senha: {this.state.password}</Text>
-                    <Button style={styles.button} title="Logar" onPress={() => {this.logar()}} />
-                    <Button style={styles.button} title="Cancelar" onPress={() => this.props.navigation.navigate('Welcome')} />
+                    <View style={styles.buttonContainer}>
+                        <TouchableOpacity style={styles.button} onPress={() => { this.logar() }}>
+                            <Text style={styles.buttonText}>Logar</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity style={styles.button} onPress={() => this.props.navigation.navigate('Welcome')}>
+                            <Text style={styles.buttonText}>Cancelar</Text>
+                        </TouchableOpacity>
+                    </View>
+                    {/* <Button style={styles.button} title="Logar" />
+                    <Button style={styles.button} title="Cancelar" /> */}
                 </View>
             </View>
         );

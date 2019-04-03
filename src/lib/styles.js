@@ -3,17 +3,24 @@ import {StyleSheet} from 'react-native';
 
 export default styles = StyleSheet.create({
     title: {
-        paddingTop: 5,
+        paddingTop: 15,
         flex: 1,
         fontSize: 25,
         fontWeight: 'bold',
-        backgroundColor: "blue",
+        backgroundColor: "#0D47A1",
         color: "white",
-        textAlign: "center"
+        textAlign: "center",
+        alignItems: "center",
+        justifyContent: "center"
     },
     screenContainer: {
         flex: 9, 
         fontSize: 18 
+    },
+    formContainer: {
+        flexDirection: 'column',
+        justifyContent: "center",
+        alignItems: "center",
     },
     productContainer: { 
         borderBottomWidth: 1, 
@@ -33,9 +40,26 @@ export default styles = StyleSheet.create({
         alignItems: "stretch" 
     },
     input: {
-        flex: 1
+        height: 40,
+        marginBottom: 5,
+        textAlign: "center",
     },
+    buttonContainer: {
+        flexDirection: "row",
+        alignItems: "center",
+        justifyContent: "center",
+        marginTop: 10
+    }, 
     button: {
-        flex: 1
+        height: 40,
+        width: 100,
+        marginLeft: 5,
+        alignItems: "center",
+        justifyContent: "center",
+        backgroundColor: "#2196F3",
+        borderRadius: 3
+    },
+    buttonText: {
+        color: "white"
     }
 });
