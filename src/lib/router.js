@@ -11,11 +11,11 @@ const AppNavigator = createMaterialTopTabNavigator({
 },{
     tabBarOptions: {
         activeTintColor: "white",
-        inactiveTintColor: "tomato",
+        inactiveTintColor: "#0D47A1",
         showIcon: true,
         showLabel: false,
         style: {
-            backgroundColor: "red", 
+            backgroundColor: "#2196F3", 
         }
     },
 });

@@ -4918,6 +4918,13 @@ react-lifecycles-compat@^3.0.4:
   resolved "https://registry.yarnpkg.com/react-lifecycles-compat/-/react-lifecycles-compat-3.0.4.tgz#4f1a273afdfc8f3488a8c516bfda78f872352362"
   integrity sha512-fBASbA6LnOU9dOU2eW7aQ8xmYBSXUIWr+UmF9b1efZBazGNO+rcXT/icdKnYm2pTwcRylVUYwW7H1PHfLekVzA==
 
+react-native-fab@^1.0.8:
+  version "1.0.8"
+  resolved "https://registry.yarnpkg.com/react-native-fab/-/react-native-fab-1.0.8.tgz#653001e774e63debd0ea7e86d4f2b691df59284d"
+  integrity sha512-wGh9DGOdDU1MUwpo1BpeCiWqLsSyNU6t+opYBw+4az99rtHF10D+ttZUqpwQOSrWh7lhBXwrTlnfnIyhS/TT7A==
+  dependencies:
+    prop-types "^15.5.10"
+
 react-native-gesture-handler@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/react-native-gesture-handler/-/react-native-gesture-handler-1.1.0.tgz#2a7d545ad2e0ca23adce22b2af441ad360ecccee"

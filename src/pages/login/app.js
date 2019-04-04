@@ -11,7 +11,7 @@ export default class App extends Component {
         return (
             <View style={{ flex: 1 }}>
                 <StatusBar
-                    backgroundColor="red"
+                    backgroundColor="#0D47A1"
                     barStyle="light-content"
                 />
                 <View style={styles.header}>
@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         justifyContent: "space-between",
         alignItems: "center",
-        backgroundColor: "red",
+        backgroundColor: "#2196F3",
         paddingHorizontal: 10,
         paddingTop: 5,
     }

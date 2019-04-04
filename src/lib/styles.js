@@ -61,5 +61,21 @@ export default styles = StyleSheet.create({
     },
     buttonText: {
         color: "white"
+    },
+    fab: {
+        backgroundColor: "#2196F3",
+        height: 70,
+        width: 70,
+        position: "absolute",
+        right: 15,
+        bottom: 15,
+        justifyContent: "center",
+        alignItems: "center",
+        borderRadius: 43,
+    },
+    fabIcon: {
+        color: "white",
+        fontSize: 28,
+        fontWeight: "bold"
     }
 });

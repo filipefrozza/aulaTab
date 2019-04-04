@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import {View, Text, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import API from '../../lib/api';
 import styles from '../../lib/styles';
@@ -55,6 +55,10 @@ export default class ProdutoScreen extends Component{
                             }
                         )
                     }
+                    <TouchableOpacity 
+                        style={styles.fab}>
+                        <Icon style={styles.fabIcon} name="md-add" />
+                    </TouchableOpacity>
                 </View>
             </View>
         );
