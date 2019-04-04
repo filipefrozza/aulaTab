@@ -23,17 +23,23 @@ export default styles = StyleSheet.create({
         alignItems: "center",
     },
     productContainer: { 
-        borderBottomWidth: 1, 
-        flexDirection: "row", 
-        paddingVertical: 10 
+        flexDirection: "row",  
     },
     productText: {
-        paddingLeft: 10,
-        flex: 4
+        borderColor: "rgba(0,0,0,0.5)",
+        borderBottomWidth: 1, 
+        flex: 4,
+        borderBottomLeftRadius: 25,
+        paddingVertical: 10,
+        paddingLeft: 20
     },
     productPrice: {
+        borderColor: "rgba(0,0,0,0.5)",
+        borderBottomWidth: 1, 
         paddingRight: 10,
-        flex: 1
+        flex: 1,
+        borderBottomRightRadius: 25, 
+        paddingVertical: 10,
     },
     container: { 
         flex: 1, 
@@ -77,5 +83,8 @@ export default styles = StyleSheet.create({
         color: "white",
         fontSize: 28,
         fontWeight: "bold"
+    },
+    textArea: {
+        height: 150
     }
 });

@@ -6,7 +6,7 @@ import API from '../../lib/api';
 export default class LoginScreen extends Component{
     constructor(props){
         super(props);
-        this.state = {password: "", email: "", token: ""};
+        this.state = { password: "123456", email: "filipefrozza.fm@gmail.com"};
     }
 
     render() {
