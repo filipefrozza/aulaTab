@@ -47,10 +47,14 @@ export default class ListarScreen extends Component {
                         this.state.produtos.map(
                             produto => {
                                 return (
-                                    <View key={produto._id} style={styles.productContainer}>
+                                    <TouchableOpacity 
+                                        key={produto._id} 
+                                        style={styles.productContainer}
+                                        onPress={() => {this.props.navigation.navigate('Detalhe',{id: produto._id})}}
+                                    >
                                         <Text style={styles.productText}>{produto.nome}</Text>
                                         <Text style={styles.productPrice}>R$ {produto.preco}</Text>
-                                    </View>
+                                    </TouchableOpacity>
                                 );
                             }
                         )

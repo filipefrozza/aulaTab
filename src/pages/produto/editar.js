@@ -8,10 +8,37 @@ export default class CadastrarScreen extends Component{
         this.state = { nome: "", peso: "", preco: "", descricao: "" };
     }
 
-    cadastrar(){
-        API.post('produtos', this.state).then((res) => {
-            alert("Cadastrado");
-            this.props.navigation.navigate('Listar');
+    buscar(id) {
+        API.get(`produtos/${id}`, this.state).then((res) => {
+            if (res.data.nome) {
+                this.setState(res.data);
+            } else {
+                alert("Houve um problema");
+                this.props.navigation.navigate('Detalhe',{id: id});
+            }
+        }).catch((e) => {
+            if (e.response) {
+                if (e.response.status == 400) {
+                    alert("Você não tem permissão");
+                } else {
+                    if (this.state.nome == "") {
+                        alert("Você precisa preencher um nome");
+                    } else if (this.state.preco == "") {
+                        alert("Você precisa preencher um preco");
+                    }
+                }
+            } else if (e.request) {
+                alert("Problemas no servidor");
+            } else {
+                alert("Problemas no aplicativo");
+            }
+        });
+    }
+
+    editar(id){
+        API.put(`produtos/${id}`, this.state).then((res) => {
+            alert("Alterado");
+            this.props.navigation.navigate('Detalhe', {id: id});
         }).catch((e) => {
             if (e.response) {
                 if (e.response.status == 400) {
@@ -31,11 +58,20 @@ export default class CadastrarScreen extends Component{
         });
     }
 
+    componentDidMount() {
+        if (this.props.navigation.getParam('id')) {
+            this.buscar(this.props.navigation.getParam('id'));
+        } else {
+            alert("Você não selecionou um produto");
+            this.props.navigation.navigate('Listar');
+        }
+    }
+
     render(){
         return (
             <View style={styles.container}>
                 <Text style={styles.title}>
-                    Novo Produto
+                    Editar Produto
                 </Text>
                 <View style={styles.screenContainer}>
                     <TextInput
@@ -44,6 +80,7 @@ export default class CadastrarScreen extends Component{
                         returnKeyType="next"
                         onSubmitEditing={() => this.precoInput.focus()}
                         autoCorrect={false}
+                        defaultValue={this.state.nome}
                         onChangeText={(text) => { this.setState({ nome: text }) }}
                     />
                     <TextInput
@@ -53,6 +90,7 @@ export default class CadastrarScreen extends Component{
                         keyboardType="numeric"
                         onSubmitEditing={() => this.pesoInput.focus()}
                         ref={(input) => this.precoInput = input}
+                        defaultValue={`${this.state.preco}`}
                         onChangeText={(text) => this.setState({ preco: text })}
                     />
                     <TextInput
@@ -62,6 +100,7 @@ export default class CadastrarScreen extends Component{
                         keyboardType="numeric"
                         onSubmitEditing={() => this.descricaoInput.focus()}
                         ref={(input) => this.pesoInput = input}
+                        defaultValue={`${this.state.peso}`}
                         onChangeText={(text) => this.setState({ peso: text })}
                     />
                     <TextInput
@@ -72,13 +111,14 @@ export default class CadastrarScreen extends Component{
                         numberOfLines={5}
                         scrollEnabled={true}
                         ref={(input) => this.descricaoInput = input}
+                        defaultValue={this.state.descricao}
                         onChangeText={(text) => this.setState({ descricao: text })}
                     />
                     <View style={styles.buttonContainer}>
-                        <TouchableOpacity style={styles.button} onPress={() => {this.cadastrar();}}>
-                            <Text style={styles.buttonText}>Cadastrar</Text>
+                        <TouchableOpacity style={styles.button} onPress={() => {this.editar(this.state._id);}}>
+                            <Text style={styles.buttonText}>Salvar</Text>
                         </TouchableOpacity>
-                        <TouchableOpacity style={styles.button} onPress={() => this.props.navigation.navigate('Listar')}>
+                        <TouchableOpacity style={styles.button} onPress={() => this.props.navigation.navigate('Detalhe', {id: this.state._id})}>
                             <Text style={styles.buttonText}>Cancelar</Text>
                         </TouchableOpacity>
                     </View>

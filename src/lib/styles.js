@@ -68,6 +68,13 @@ export default styles = StyleSheet.create({
     buttonText: {
         color: "white"
     },
+    detailTitle: {
+        fontSize: 24
+    },
+    detailText: {
+        textAlign: "center",
+        fontSize: 18
+    }, 
     fab: {
         backgroundColor: "#2196F3",
         height: 70,
